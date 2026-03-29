@@ -1,0 +1,11 @@
+# Images dans upload
+upload/*.jpg
+upload/*.jpeg
+upload/*.png
+upload/*.gif
+upload/*.webp
+upload/*.svg
+upload/*.bmp
+
+# Garder le dossier upload
+!upload/.gitkeep

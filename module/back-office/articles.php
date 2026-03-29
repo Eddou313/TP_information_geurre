@@ -1,11 +1,40 @@
 <?php
 require_once __DIR__ . '/../database.php';
 
-function getAllArticles(): array {
+define('ADMIN_ARTICLES_PER_PAGE', 10);
+
+function getAllArticles(int $page = 1, ?string $dateFrom = null, ?string $dateTo = null, ?string $status = null): array {
     $pdo = connectDB();
-    if (!$pdo) return [];
+    if (!$pdo) return ['articles' => [], 'total' => 0, 'totalPages' => 0, 'currentPage' => 1];
 
     try {
+        $where = "WHERE 1=1";
+        $params = [];
+
+        if ($dateFrom) {
+            $where .= " AND a.date_creation >= :dateFrom";
+            $params['dateFrom'] = $dateFrom;
+        }
+        if ($dateTo) {
+            $where .= " AND a.date_creation <= :dateTo";
+            $params['dateTo'] = $dateTo . ' 23:59:59';
+        }
+        if ($status !== null && $status !== '') {
+            $where .= " AND a.status = :status";
+            $params['status'] = (int)$status;
+        }
+
+        // Count total
+        $countSql = "SELECT COUNT(*) FROM articles a $where";
+        $countStmt = $pdo->prepare($countSql);
+        $countStmt->execute($params);
+        $total = (int)$countStmt->fetchColumn();
+
+        $totalPages = (int)ceil($total / ADMIN_ARTICLES_PER_PAGE);
+        $page = max(1, min($page, $totalPages > 0 ? $totalPages : 1));
+        $offset = ($page - 1) * ADMIN_ARTICLES_PER_PAGE;
+
+        // Get articles
         $sql = "SELECT
                     a.id, a.titre, a.chapeau, a.status,
                     a.date_creation, a.date_publication,
@@ -14,11 +43,27 @@ function getAllArticles(): array {
                 FROM articles a
                 LEFT JOIN users u ON a.author_id = u.id
                 LEFT JOIN images i ON a.image_id = i.id
-                ORDER BY a.date_creation DESC";
-        return $pdo->query($sql)->fetchAll();
+                $where
+                ORDER BY a.date_creation DESC
+                LIMIT :limit OFFSET :offset";
+
+        $stmt = $pdo->prepare($sql);
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value);
+        }
+        $stmt->bindValue('limit', ADMIN_ARTICLES_PER_PAGE, PDO::PARAM_INT);
+        $stmt->bindValue('offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return [
+            'articles' => $stmt->fetchAll(),
+            'total' => $total,
+            'totalPages' => $totalPages,
+            'currentPage' => $page
+        ];
     } catch (PDOException $e) {
         error_log("Erreur getAllArticles: " . $e->getMessage());
-        return [];
+        return ['articles' => [], 'total' => 0, 'totalPages' => 0, 'currentPage' => 1];
     }
 }
 

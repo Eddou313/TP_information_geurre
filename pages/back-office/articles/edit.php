@@ -6,6 +6,11 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 }
 
 require_once __DIR__ . '/../../../module/back-office/articles.php';
+require_once __DIR__ . '/../../../module/back-office/auth.php';
+
+$user = getSessionUser();
+$currentPage = 'articles-edit';
+$basePath = '../';
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 $article = getArticleForEdit($id);
@@ -39,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Refresh article data
     $article = getArticleForEdit($id);
 }
 ?>
@@ -52,118 +56,121 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../../../static/css/admin.css">
 </head>
 <body>
-    <nav class="admin-navbar">
-        <h1>Back Office</h1>
-        <div class="nav-links">
-            <a href="../home.php">Tableau de bord</a>
-            <a href="list.php" class="active">Articles</a>
-            <a href="../logout.php" class="btn-logout">Deconnexion</a>
-        </div>
-    </nav>
+    <div class="admin-layout">
+        <?php include __DIR__ . '/../includes/sidebar.php'; ?>
 
-    <div class="admin-container">
-        <div class="page-header">
-            <h2>Modifier l'Article</h2>
-            <div style="display:flex;gap:10px;">
-                <a href="view.php?id=<?php echo $id; ?>" class="btn btn-secondary">&#128065; Voir</a>
-                <a href="list.php" class="btn btn-secondary">&#8592; Retour</a>
+        <main class="main-content">
+            <div class="page-header">
+                <h2>Modifier l'Article</h2>
+                <div style="display:flex;gap:10px;">
+                    <a href="view.php?id=<?php echo $id; ?>" class="btn btn-secondary">
+                        <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        Voir
+                    </a>
+                    <a href="list.php" class="btn btn-secondary">
+                        <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                        Retour
+                    </a>
+                </div>
             </div>
-        </div>
 
-        <?php if ($error): ?>
-            <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
-        <?php endif; ?>
+            <?php if ($error): ?>
+                <div class="alert alert-danger">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                    <?php echo htmlspecialchars($error); ?>
+                </div>
+            <?php endif; ?>
 
-        <div class="card">
-            <div class="card-body">
-                <form method="POST" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="titre">Titre *</label>
-                        <input type="text" id="titre" name="titre" class="form-control"
-                               value="<?php echo htmlspecialchars($article['titre']); ?>" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="chapeau">Chapeau *</label>
-                        <input type="text" id="chapeau" name="chapeau" class="form-control"
-                               value="<?php echo htmlspecialchars($article['chapeau']); ?>" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="contenu">Contenu *</label>
-                        <textarea id="contenu" name="contenu" class="form-control" required><?php echo htmlspecialchars($article['contenu']); ?></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Image principale actuelle</label>
-                        <?php if ($article['image_principale']): ?>
-                            <div class="image-preview">
-                                <div class="preview-item">
-                                    <img src="../../../<?php echo htmlspecialchars($article['image_principale']); ?>" alt="">
-                                </div>
-                            </div>
-                        <?php else: ?>
-                            <p style="color:#888;">Aucune image principale</p>
-                        <?php endif; ?>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Changer l'image principale</label>
-                        <div class="file-upload">
-                            <input type="file" name="image_principale" accept="image/*" data-preview="preview-principale">
-                            <label class="file-upload-label">
-                                <span class="icon">&#128247;</span>
-                                <span>Cliquez ou glissez une nouvelle image</span>
-                            </label>
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="titre">Titre *</label>
+                            <input type="text" id="titre" name="titre" class="form-control" value="<?php echo htmlspecialchars($article['titre']); ?>" required>
                         </div>
-                        <div id="preview-principale" class="image-preview"></div>
-                    </div>
 
-                    <div class="form-group">
-                        <label>Images supplementaires actuelles</label>
-                        <?php if (!empty($article['images'])): ?>
-                            <div class="image-preview">
-                                <?php foreach ($article['images'] as $img): ?>
-                                    <div class="preview-item existing-image">
-                                        <img src="../../../<?php echo htmlspecialchars($img['chemin']); ?>" alt="">
-                                        <button type="button" class="remove-btn"
-                                                data-article-id="<?php echo $id; ?>"
-                                                data-image-id="<?php echo $img['id']; ?>">&times;</button>
+                        <div class="form-group">
+                            <label for="chapeau">Chapeau *</label>
+                            <input type="text" id="chapeau" name="chapeau" class="form-control" value="<?php echo htmlspecialchars($article['chapeau']); ?>" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contenu">Contenu *</label>
+                            <textarea id="contenu" name="contenu" class="form-control" required><?php echo htmlspecialchars($article['contenu']); ?></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Image principale actuelle</label>
+                            <?php if ($article['image_principale']): ?>
+                                <div class="image-preview">
+                                    <div class="preview-item">
+                                        <img src="../../../<?php echo htmlspecialchars($article['image_principale']); ?>" alt="">
                                     </div>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php else: ?>
-                            <p style="color:#888;">Aucune image supplementaire</p>
-                        <?php endif; ?>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Ajouter des images supplementaires</label>
-                        <div class="file-upload">
-                            <input type="file" name="images_supplementaires[]" accept="image/*" multiple data-preview="preview-supplementaires">
-                            <label class="file-upload-label">
-                                <span class="icon">&#128248;</span>
-                                <span>Cliquez ou glissez plusieurs images</span>
-                            </label>
+                                </div>
+                            <?php else: ?>
+                                <p style="color:#888;">Aucune image principale</p>
+                            <?php endif; ?>
                         </div>
-                        <div id="preview-supplementaires" class="image-preview"></div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="status">Statut</label>
-                        <select id="status" name="status" class="form-control">
-                            <option value="0" <?php echo $article['status'] == 0 ? 'selected' : ''; ?>>Brouillon</option>
-                            <option value="1" <?php echo $article['status'] == 1 ? 'selected' : ''; ?>>Publie</option>
-                        </select>
-                    </div>
+                        <div class="form-group">
+                            <label>Changer l'image principale</label>
+                            <div class="file-upload">
+                                <input type="file" name="image_principale" accept="image/*" data-preview="preview-principale">
+                                <label class="file-upload-label">
+                                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                    <span>Cliquez ou glissez une nouvelle image</span>
+                                </label>
+                            </div>
+                            <div id="preview-principale" class="image-preview"></div>
+                        </div>
 
-                    <div style="display:flex;gap:15px;margin-top:30px;">
-                        <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
-                        <a href="list.php" class="btn btn-secondary">Annuler</a>
-                    </div>
-                </form>
+                        <div class="form-group">
+                            <label>Images supplementaires actuelles</label>
+                            <?php if (!empty($article['images'])): ?>
+                                <div class="image-preview">
+                                    <?php foreach ($article['images'] as $img): ?>
+                                        <div class="preview-item existing-image">
+                                            <img src="../../../<?php echo htmlspecialchars($img['chemin']); ?>" alt="">
+                                            <button type="button" class="remove-btn" data-article-id="<?php echo $id; ?>" data-image-id="<?php echo $img['id']; ?>">x</button>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php else: ?>
+                                <p style="color:#888;">Aucune image supplementaire</p>
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ajouter des images supplementaires</label>
+                            <div class="file-upload">
+                                <input type="file" name="images_supplementaires[]" accept="image/*" multiple data-preview="preview-supplementaires">
+                                <label class="file-upload-label">
+                                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                    <span>Cliquez ou glissez plusieurs images</span>
+                                </label>
+                            </div>
+                            <div id="preview-supplementaires" class="image-preview"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status">Statut</label>
+                            <select id="status" name="status" class="form-control">
+                                <option value="0" <?php echo $article['status'] == 0 ? 'selected' : ''; ?>>Brouillon</option>
+                                <option value="1" <?php echo $article['status'] == 1 ? 'selected' : ''; ?>>Publie</option>
+                            </select>
+                        </div>
+
+                        <div style="display:flex;gap:15px;margin-top:30px;">
+                            <button type="submit" class="btn btn-primary">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                                Enregistrer
+                            </button>
+                            <a href="list.php" class="btn btn-secondary">Annuler</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
+        </main>
     </div>
 
     <script src="../../../static/js/admin.js"></script>

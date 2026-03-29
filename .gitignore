@@ -1,5 +1,5 @@
 # Images dans uploads
-uploads/*.jpg
+
 uploads/*.jpeg
 uploads/*.png
 uploads/*.gif

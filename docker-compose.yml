@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  # Application PHP/Apache
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: information_guerre_app
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+      - ./uploads:/var/www/html/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=information_guerre
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # Base de donnees PostgreSQL
+  db:
+    image: postgres:15-alpine
+    container_name: information_guerre_db
+    environment:
+      POSTGRES_DB: information_guerre
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d information_guerre"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # pgAdmin (optionnel - interface web pour PostgreSQL)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: information_guerre_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    networks:
+      - app-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:
+    driver: bridge

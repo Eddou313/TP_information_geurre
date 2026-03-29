@@ -1,10 +1,17 @@
 <?php
+
+/**
+ * Connexion a la base de donnees PostgreSQL
+ * Supporte les variables d'environnement Docker
+ * @return PDO|null Instance PDO ou null en cas d'erreur
+ */
 function connectDB(): ?PDO {
-    $host = 'localhost';
-    $port = '5432';
-    $dbname = 'information_guerre';
-    $user = 'postgres';
-    $password = 'postgres';
+    // Utiliser les variables d'environnement si disponibles (Docker)
+    $host = getenv('DB_HOST') ?: 'localhost';
+    $port = getenv('DB_PORT') ?: '5432';
+    $dbname = getenv('DB_NAME') ?: 'information_guerre';
+    $user = getenv('DB_USER') ?: 'postgres';
+    $password = getenv('DB_PASSWORD') ?: 'postgres';
 
     try {
         $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";

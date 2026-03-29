@@ -25,6 +25,8 @@ if (!$article) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apercu detaille d'un article dans le Back Office avec contenu, statut, dates et galerie d'images.">
+    <meta name="robots" content="noindex, nofollow">
     <title><?php echo htmlspecialchars($article['titre']); ?> - Back Office</title>
     <link rel="stylesheet" href="../../../static/css/admin.css">
 </head>

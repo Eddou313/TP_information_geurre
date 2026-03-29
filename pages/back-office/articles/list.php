@@ -50,6 +50,8 @@ function buildQueryString(array $params): string {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestion de la liste des articles Back Office avec filtres, statut de publication et actions d'administration.">
+    <meta name="robots" content="noindex, nofollow">
     <title>Gestion des Articles - Back Office</title>
     <link rel="stylesheet" href="../../../static/css/admin.css">
     <style>
@@ -297,7 +299,7 @@ function buildQueryString(array $params): string {
                                         <tr>
                                             <td>
                                                 <?php if ($article['image_principale']): ?>
-                                                    <img src="../../../<?php echo htmlspecialchars($article['image_principale']); ?>" alt="" class="thumbnail">
+                                                    <img src="../../../<?php echo htmlspecialchars($article['image_principale']); ?>" alt="Miniature de l'article <?php echo htmlspecialchars($article['titre']); ?>" class="thumbnail">
                                                 <?php else: ?>
                                                     <div class="thumbnail" style="background:#eee;display:flex;align-items:center;justify-content:center;color:#999;">
                                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>

@@ -31,6 +31,8 @@ function buildQueryString(array $params): string {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Consultez les derniers articles publies sur Information Guerre, avec filtrage par date et pagination.">
+    <meta name="robots" content="index, follow">
     <title>Articles - Information Guerre</title>
     <link rel="stylesheet" href="../../static/css/articles.css">
 </head>

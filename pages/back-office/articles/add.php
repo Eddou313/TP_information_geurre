@@ -41,6 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creation d'un nouvel article dans le Back Office avec gestion des images principales et supplementaires.">
+    <meta name="robots" content="noindex, nofollow">
     <title>Nouvel Article - Back Office</title>
     <link rel="stylesheet" href="../../../static/css/admin.css">
 </head>

@@ -129,3 +129,51 @@ body {
     text-decoration: none;
     border-radius: 5px;
 }
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 16px 18px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .navbar h1 {
+        font-size: 20px;
+    }
+
+    .article-container {
+        margin: 24px auto;
+        padding: 0 14px;
+    }
+
+    .article-header-content {
+        padding: 20px;
+    }
+
+    .article-header h1 {
+        font-size: 25px;
+    }
+
+    .article-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .article-body {
+        padding: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-header h1 {
+        font-size: 22px;
+    }
+
+    .article-chapeau {
+        font-size: 16px;
+    }
+
+    .article-body {
+        padding: 18px;
+    }
+}

@@ -12,6 +12,8 @@ $stats = getStats();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tableau de bord d'administration pour gerer les articles, les images et les actions Back Office.">
+    <meta name="robots" content="noindex, nofollow">
     <title>Tableau de bord - Back Office</title>
     <link rel="stylesheet" href="../../static/css/admin.css">
 </head>

@@ -52,6 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Modification d'un article Back Office avec mise a jour du contenu, du statut et des images associees.">
+    <meta name="robots" content="noindex, nofollow">
     <title>Modifier Article - Back Office</title>
     <link rel="stylesheet" href="../../../static/css/admin.css">
 </head>
@@ -104,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <?php if ($article['image_principale']): ?>
                                 <div class="image-preview">
                                     <div class="preview-item">
-                                        <img src="../../../<?php echo htmlspecialchars($article['image_principale']); ?>" alt="">
+                                        <img src="../../../<?php echo htmlspecialchars($article['image_principale']); ?>" alt="Image principale actuelle de l'article <?php echo htmlspecialchars($article['titre']); ?>">
                                     </div>
                                 </div>
                             <?php else: ?>
@@ -130,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="image-preview">
                                     <?php foreach ($article['images'] as $img): ?>
                                         <div class="preview-item existing-image">
-                                            <img src="../../../<?php echo htmlspecialchars($img['chemin']); ?>" alt="">
+                                            <img src="../../../<?php echo htmlspecialchars($img['chemin']); ?>" alt="Image supplementaire <?php echo htmlspecialchars($img['nom_fichier']); ?> de l'article <?php echo htmlspecialchars($article['titre']); ?>">
                                             <button type="button" class="remove-btn" data-article-id="<?php echo $id; ?>" data-image-id="<?php echo $img['id']; ?>">x</button>
                                         </div>
                                     <?php endforeach; ?>

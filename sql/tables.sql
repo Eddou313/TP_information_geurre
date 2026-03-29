@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS articles (
     titre VARCHAR(255) NOT NULL,
     chapeau VARCHAR(255) NOT NULL,
     contenu TEXT NOT NULL,
-    image_id INTEGER FOREIGN KEY REFERENCES images(id),
+    image_id INTEGER REFERENCES images(id),
     author_id INTEGER REFERENCES users(id),
     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     date_publication TIMESTAMP,

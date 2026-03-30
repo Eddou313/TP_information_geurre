@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . '/../../module/front-office/articles.php';
 
-$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+// Extract ID from slug (format: "123-slug-titre" or just "123")
+$idParam = isset($_GET['id']) ? $_GET['id'] : '0';
+$id = (int) preg_replace('/^([0-9]+).*$/', '$1', $idParam);
 $article = getArticleById($id);
 ?>
 <!DOCTYPE html>
@@ -23,7 +25,7 @@ $article = getArticleById($id);
             <div class="not-found">
                 <h2>Article non trouve</h2>
                 <p>L'article que vous recherchez n'existe pas ou n'est plus disponible.</p>
-                <a href="articles.php">Voir tous les articles</a>
+                <a href="/TP_information_geurre/articles">Voir tous les articles</a>
             </div>
         <?php else: ?>
             <div class="article-header">

@@ -9,7 +9,7 @@
             <span class="logo-text">Information Guerre</span>
         </a>
 
-        <form class="search-form" action="/TP_information_geurre/pages/front-office/articles.php" method="GET">
+        <form class="search-form" action="/TP_information_geurre/articles" method="GET">
             <input type="text" name="q" class="search-input" placeholder="Rechercher un article..." value="<?php echo htmlspecialchars($_GET['q'] ?? ''); ?>">
             <button type="submit" class="search-btn" aria-label="Rechercher">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -21,7 +21,7 @@
 
         <nav class="header-nav">
             <a href="/TP_information_geurre/" class="nav-link">Accueil</a>
-            <a href="/TP_information_geurre/pages/front-office/articles.php" class="nav-link">Articles</a>
+            <a href="/TP_information_geurre/articles" class="nav-link">Articles</a>
             <a href="/TP_information_geurre/admins" class="btn-admin">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
@@ -41,7 +41,7 @@
     </div>
 
     <div class="mobile-menu" id="mobileMenu">
-        <form class="mobile-search-form" action="/TP_information_geurre/pages/front-office/articles.php" method="GET">
+        <form class="mobile-search-form" action="/TP_information_geurre/articles" method="GET">
             <input type="text" name="q" class="search-input" placeholder="Rechercher..." value="<?php echo htmlspecialchars($_GET['q'] ?? ''); ?>">
             <button type="submit" class="search-btn" aria-label="Rechercher">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -51,7 +51,7 @@
             </button>
         </form>
         <a href="/TP_information_geurre/" class="mobile-nav-link">Accueil</a>
-        <a href="/TP_information_geurre/pages/front-office/articles.php" class="mobile-nav-link">Articles</a>
+        <a href="/TP_information_geurre/articles" class="mobile-nav-link">Articles</a>
         <a href="/TP_information_geurre/admins" class="mobile-nav-link btn-admin-mobile">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>

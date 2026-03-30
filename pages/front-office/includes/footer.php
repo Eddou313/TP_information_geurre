@@ -16,7 +16,7 @@
             <h4>Navigation</h4>
             <ul>
                 <li><a href="/TP_information_geurre/">Accueil</a></li>
-                <li><a href="/TP_information_geurre/pages/front-office/articles.php">Articles</a></li>
+                <li><a href="/TP_information_geurre/articles">Articles</a></li>
                 <li><a href="/TP_information_geurre/admins">Administration</a></li>
             </ul>
         </div>

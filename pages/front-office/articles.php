@@ -55,9 +55,9 @@ function buildQueryString(array $params): string {
             </div>
             <button type="submit" class="btn-filter">Filtrer</button>
             <?php if ($showAll): ?>
-                <a href="articles.php" class="btn-filter">Cette semaine</a>
+                <a href="/TP_information_geurre/articles" class="btn-filter">Cette semaine</a>
             <?php else: ?>
-                <a href="articles.php?all=1" class="btn-reset">Tous les articles</a>
+                <a href="/TP_information_geurre/articles?all=1" class="btn-reset">Tous les articles</a>
             <?php endif; ?>
         </form>
 
@@ -82,7 +82,7 @@ function buildQueryString(array $params): string {
 
                         <div class="article-content">
                             <h3 class="article-title">
-                                <a href="article.php?id=<?php echo $article['id']; ?>">
+                                <a href="<?php echo getArticleUrl($article['id'], $article['titre']); ?>">
                                     <?php echo htmlspecialchars($article['titre']); ?>
                                 </a>
                             </h3>
@@ -95,7 +95,7 @@ function buildQueryString(array $params): string {
                                     <?php echo date('d/m/Y', strtotime($article['date_publication'])); ?>
                                 </span>
                             </div>
-                            <a href="articles/view-<?php echo $article['id']; ?>-<?php echo $article['titre']; ?>" class="btn-lire">Lire la suite</a>
+                            <a href="<?php echo getArticleUrl($article['id'], $article['titre']); ?>" class="btn-lire">Lire la suite</a>
                         </div>
                     </article>
                 <?php endforeach; ?>

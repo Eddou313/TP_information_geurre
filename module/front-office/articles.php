@@ -3,6 +3,44 @@ require_once __DIR__ . '/../database.php';
 
 define('ARTICLES_PER_PAGE', 6);
 
+/**
+ * Generate a URL-friendly slug from a string
+ */
+function generateSlug(string $text): string {
+    // Convert to lowercase
+    $slug = mb_strtolower($text, 'UTF-8');
+
+    // Replace accented characters
+    $accents = [
+        'à' => 'a', 'â' => 'a', 'ä' => 'a', 'á' => 'a', 'ã' => 'a',
+        'è' => 'e', 'ê' => 'e', 'ë' => 'e', 'é' => 'e',
+        'ì' => 'i', 'î' => 'i', 'ï' => 'i', 'í' => 'i',
+        'ò' => 'o', 'ô' => 'o', 'ö' => 'o', 'ó' => 'o', 'õ' => 'o',
+        'ù' => 'u', 'û' => 'u', 'ü' => 'u', 'ú' => 'u',
+        'ý' => 'y', 'ÿ' => 'y',
+        'ñ' => 'n', 'ç' => 'c',
+        'œ' => 'oe', 'æ' => 'ae'
+    ];
+    $slug = strtr($slug, $accents);
+
+    // Replace non-alphanumeric characters with hyphens
+    $slug = preg_replace('/[^a-z0-9]+/', '-', $slug);
+
+    // Remove leading/trailing hyphens and multiple consecutive hyphens
+    $slug = trim($slug, '-');
+    $slug = preg_replace('/-+/', '-', $slug);
+
+    return $slug;
+}
+
+/**
+ * Generate article URL
+ */
+function getArticleUrl(int $id, string $titre): string {
+    $slug = generateSlug($titre);
+    return '/TP_information_geurre/article/' . $id . '-' . $slug;
+}
+
 function getPublishedArticles(int $page = 1, ?string $dateFrom = null, ?string $dateTo = null): array {
     $pdo = connectDB();
 

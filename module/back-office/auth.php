@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
 
 function isLoggedIn(): bool {
     return isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;

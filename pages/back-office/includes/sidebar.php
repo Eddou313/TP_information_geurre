@@ -1,10 +1,17 @@
 <?php
 // Sidebar include - requires $user and $currentPage variables
 ?>
-<aside class="sidebar">
+<button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
+    <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
         <h1>Back Office</h1>
         <span>Gestion de contenu</span>
+        <button class="sidebar-close" id="sidebarClose" aria-label="Fermer le menu">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
     </div>
 
     <nav class="sidebar-nav">
@@ -55,4 +62,21 @@
     function toggleDropdown(element) {
         element.classList.toggle('open');
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var menuToggle = document.getElementById('menuToggle');
+        var sidebar = document.getElementById('sidebar');
+        var overlay = document.getElementById('sidebarOverlay');
+        var closeBtn = document.getElementById('sidebarClose');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('open');
+            document.body.classList.toggle('sidebar-open');
+        }
+
+        if (menuToggle) menuToggle.addEventListener('click', toggleSidebar);
+        if (overlay) overlay.addEventListener('click', toggleSidebar);
+        if (closeBtn) closeBtn.addEventListener('click', toggleSidebar);
+    });
 </script>

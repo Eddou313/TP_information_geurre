@@ -193,6 +193,48 @@ function buildQueryString(array $params): string {
             stroke-width: 2;
             fill: none;
         }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .filter-bar form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .filter-group {
+                width: 100%;
+            }
+            .filter-group input,
+            .filter-group select {
+                width: 100%;
+                min-width: auto;
+            }
+            .filter-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            .filter-actions .btn-filter,
+            .filter-actions .btn-reset {
+                width: 100%;
+                justify-content: center;
+            }
+            .results-info {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+            .admin-table {
+                font-size: 12px;
+            }
+            .admin-table th:nth-child(3),
+            .admin-table td:nth-child(3),
+            .admin-table th:nth-child(4),
+            .admin-table td:nth-child(4) {
+                display: none;
+            }
+            .pagination {
+                flex-wrap: wrap;
+            }
+        }
     </style>
 </head>
 <body>
@@ -384,6 +426,8 @@ function buildQueryString(array $params): string {
                     <?php endif; ?>
                 </div>
             </div>
+
+            <?php include __DIR__ . '/../includes/footer.php'; ?>
         </main>
     </div>
 

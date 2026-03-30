@@ -37,9 +37,7 @@ function buildQueryString(array $params): string {
     <link rel="stylesheet" href="/TP_information_geurre/static/css/articles.css">
 </head>
 <body>
-    <nav class="navbar">
-        <h1>Information Guerre</h1>
-    </nav>
+    <?php include __DIR__ . '/includes/header.php'; ?>
 
     <div class="container">
         <h2 class="page-title">Nos Articles</h2>
@@ -169,6 +167,8 @@ function buildQueryString(array $params): string {
             <?php endif; ?>
         <?php endif; ?>
     </div>
+
+    <?php include __DIR__ . '/includes/footer.php'; ?>
 
     <script src="/TP_information_geurre/static/js/articles.js"></script>
 </body>

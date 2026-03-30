@@ -12,13 +12,11 @@ $article = getArticleById($id);
     <meta name="description" content="Lecture detaillee d'un article Information Guerre avec son chapeau, son contenu et ses informations de publication.">
     <meta name="robots" content="index, follow">
     <title><?php echo $article ? htmlspecialchars($article['titre']) : 'Article non trouve'; ?> - Information Guerre</title>
+    <link rel="stylesheet" href="/TP_information_geurre/static/css/articles.css">
     <link rel="stylesheet" href="/TP_information_geurre/static/css/article-detail.css">
 </head>
 <body>
-    <nav class="navbar">
-        <h1>Information Guerre</h1>
-        <a href="../">Retour aux articles</a>
-    </nav>
+    <?php include __DIR__ . '/includes/header.php'; ?>
 
     <div class="article-container">
         <?php if (!$article): ?>
@@ -49,5 +47,7 @@ $article = getArticleById($id);
             </div>
         <?php endif; ?>
     </div>
+
+    <?php include __DIR__ . '/includes/footer.php'; ?>
 </body>
 </html>

@@ -151,6 +151,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             automatic_uploads: true,
             file_picker_types: 'image',
             images_reuse_filename: true,
+            relative_urls: false,
+            remove_script_host: true,
+            convert_urls: true,
             setup: function(editor) {
                 editor.on('change', function() {
                     tinymce.triggerSave();

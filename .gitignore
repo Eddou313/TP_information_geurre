@@ -6,6 +6,12 @@ uploads/*.gif
 uploads/*.webp
 uploads/*.svg
 uploads/*.bmp
+uploads/content/*.jpeg
+uploads/content/*.png
+uploads/content/*.gif
+uploads/content/*.webp
+uploads/content/*.svg
+uploads/content/*.bmp
 docker/images/*.tar
 static/tinymce/*
 

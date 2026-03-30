@@ -47,6 +47,7 @@ $filename = uniqid('content_') . '_' . time() . '.' . $extension;
 $filepath = $uploadDir . $filename;
 
 if (move_uploaded_file($file['tmp_name'], $filepath)) {
+    // Chemin absolu simple sans protocole ni host
     $location = '/TP_information_geurre/uploads/content/' . $filename;
     echo json_encode(['location' => $location]);
 } else {

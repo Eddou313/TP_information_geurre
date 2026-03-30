@@ -7,7 +7,7 @@ function isLoggedIn(): bool {
 
 function requireAuth(): void {
     if (!isLoggedIn()) {
-        header('Location: login.php');
+        header('Location: /TP_information_geurre/admins');
         exit;
     }
 }
@@ -24,6 +24,6 @@ function getSessionUser(): ?array {
 
 function logout(): void {
     session_destroy();
-    header('Location: login.php');
+    header('Location: /TP_information_geurre/admins');
     exit;
 }

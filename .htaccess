@@ -1,20 +1,19 @@
 Options +FollowSymlinks
 RewriteEngine On
 
-# Front office
 RewriteRule ^$ pages/front-office/articles.php [L]
 RewriteRule ^articles\.php$ pages/front-office/articles.php [L]
 RewriteRule ^article\.php$ pages/front-office/article.php [L]
 RewriteRule ^articles/view-([_a-z0-9]*)-?.*$ pages/front-office/article.php?id=$1 [L]
 
-# Back office authentication and dashboard
+
 RewriteRule ^admins/?$ pages/back-office/login.php [L]
 RewriteRule ^admins/traitement/?$ pages/back-office/login_process.php [L]
 RewriteRule ^admins/home/?$ pages/back-office/home.php [L]
 RewriteRule ^admins/logout/?$ pages/back-office/logout.php [L]
 RewriteRule ^admins/login-error-([_a-z0-9-]*)/?$ pages/back-office/login.php?error=$1 [L]
 
-# Back office articles
+
 RewriteRule ^admins/articles/?$ pages/back-office/articles/list.php [L]
 RewriteRule ^admins/articles/add/?$ pages/back-office/articles/add.php [L]
 RewriteRule ^admins/articles/view-([_a-z0-9]*)/?$ pages/back-office/articles/view.php?id=$1 [L]

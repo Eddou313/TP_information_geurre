@@ -29,7 +29,7 @@ function authenticateUser(string $username, string $password): ?array {
 
 function processLogin(): void {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        header('Location: login.php');
+        header('Location: /TP_information_geurre/admins');
         exit;
     }
 
@@ -37,7 +37,7 @@ function processLogin(): void {
     $password = $_POST['password'] ?? '';
 
     if (empty($username) || empty($password)) {
-        header('Location: login.php?error=empty');
+        header('Location: /TP_information_geurre/admins/login-error-empty');
         exit;
     }
 
@@ -49,10 +49,10 @@ function processLogin(): void {
         $_SESSION['username'] = $user['username'];
         $_SESSION['logged_in'] = true;
 
-        header('Location: home');
+        header('Location: /TP_information_geurre/admins/home');
         exit;
     } else {
-        header('Location: login-error-invalid');
+        header('Location: /TP_information_geurre/admins/login-error-invalid');
         exit;
     }
 }

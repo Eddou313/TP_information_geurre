@@ -187,7 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
                 'insertdatetime', 'media', 'table', 'help', 'wordcount'
             ],
-            toolbar: 'undo redo | blocks | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | link image | code | help',
+            toolbar: 'undo redo | blocks | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | link image | code | fullscreen',
             content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; }',
             branding: false,
             promotion: false,

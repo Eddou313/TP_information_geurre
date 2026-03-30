@@ -27,7 +27,7 @@ services:
 
   # Base de donnees PostgreSQL
   db:
-    image: postgres:15-alpine
+    image: postgres:16-alpine
     container_name: information_guerre_db
     environment:
       POSTGRES_DB: information_guerre

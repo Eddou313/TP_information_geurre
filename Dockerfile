@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Enable Apache mod_rewrite
-RUN a]2enmod rewrite
+RUN a2enmod rewrite
 
 # Set working directory
 WORKDIR /var/www/html
@@ -22,11 +22,15 @@ RUN mkdir -p /var/www/html/uploads \
     && chmod -R 755 /var/www/html/uploads
 
 # Apache configuration
-RUN echo '<Directory /var/www/html>\n\
-    Options Indexes FollowSymLinks\n\
-    AllowOverride All\n\
-    Require all granted\n\
-</Directory>' > /etc/apache2/conf-available/custom.conf \
+RUN { \
+    echo 'ServerName localhost'; \
+    echo 'Alias /TP_information_geurre /var/www/html'; \
+    echo '<Directory /var/www/html>'; \
+    echo '    Options Indexes FollowSymLinks'; \
+    echo '    AllowOverride All'; \
+    echo '    Require all granted'; \
+    echo '</Directory>'; \
+} > /etc/apache2/conf-available/custom.conf \
     && a2enconf custom
 
 EXPOSE 80

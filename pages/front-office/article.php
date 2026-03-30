@@ -45,16 +45,7 @@ $article = getArticleById($id);
             </div>
 
             <div class="article-body">
-                <?php
-                $paragraphs = explode("\n\n", $article['contenu']);
-                foreach ($paragraphs as $paragraph):
-                    if (trim($paragraph)):
-                ?>
-                    <p><?php echo htmlspecialchars($paragraph); ?></p>
-                <?php
-                    endif;
-                endforeach;
-                ?>
+                <?php echo $article['contenu']; ?>
             </div>
         <?php endif; ?>
     </div>

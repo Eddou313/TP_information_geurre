@@ -70,16 +70,7 @@ if (!$article) {
                     <p class="chapeau"><?php echo htmlspecialchars($article['chapeau']); ?></p>
 
                     <div class="content">
-                        <?php
-                        $paragraphs = explode("\n\n", $article['contenu']);
-                        foreach ($paragraphs as $paragraph):
-                            if (trim($paragraph)):
-                        ?>
-                            <p><?php echo nl2br(htmlspecialchars($paragraph)); ?></p>
-                        <?php
-                            endif;
-                        endforeach;
-                        ?>
+                        <?php echo $article['contenu']; ?>
                     </div>
 
                     <?php if (!empty($article['images'])): ?>

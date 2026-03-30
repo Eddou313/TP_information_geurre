@@ -191,6 +191,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; }',
             branding: false,
             promotion: false,
+            images_upload_url: '/TP_information_geurre/module/back-office/tinymce_upload.php',
+            automatic_uploads: true,
+            file_picker_types: 'image',
+            images_reuse_filename: true,
             setup: function(editor) {
                 editor.on('change', function() {
                     tinymce.triggerSave();

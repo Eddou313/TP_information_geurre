@@ -194,6 +194,29 @@ body {
     flex: 1;
     margin-left: 260px;
     padding: 30px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-footer {
+    margin-top: auto;
+    background: white;
+    border-top: 1px solid #eee;
+    padding: 20px 30px;
+    text-align: center;
+}
+
+.admin-footer .footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-footer p {
+    color: #888;
+    font-size: 13px;
+    margin: 0;
 }
 
 /* Top Bar */
@@ -705,122 +728,11 @@ textarea.form-control {
     font-weight: 600;
 }
 
-/* Footer */
-.admin-footer {
-    background: white;
-    border-top: 1px solid #eee;
-    padding: 20px 30px;
-    margin-top: 40px;
-    text-align: center;
-}
-
-.admin-footer .footer-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.admin-footer p {
-    color: #888;
-    font-size: 13px;
-    margin: 0;
-}
-
 /* Responsive */
-/* Menu Toggle Button */
-.menu-toggle {
-    display: none;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 1000;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
-    align-items: center;
-    justify-content: center;
-}
-
-.menu-toggle svg {
-    width: 26px;
-    height: 26px;
-    stroke: white;
-    stroke-width: 2.5;
-    fill: none;
-}
-
-/* Sidebar Close Button */
-.sidebar-close {
-    display: none;
-    position: absolute;
-    top: 20px;
-    right: 15px;
-    width: 40px;
-    height: 40px;
-    background: #f0f0f0;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-}
-
-.sidebar-close:hover {
-    background: #e0e0e0;
-}
-
-.sidebar-close svg {
-    width: 22px;
-    height: 22px;
-    stroke: #333;
-    stroke-width: 2.5;
-    fill: none;
-}
-
-/* Overlay */
-.sidebar-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 99;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.sidebar-overlay.open {
-    opacity: 1;
-}
-
 @media (max-width: 992px) {
-    .menu-toggle {
-        display: flex !important;
-    }
-
-    .sidebar-close {
-        display: flex !important;
-    }
-
-    .sidebar-overlay {
-        display: block;
-        pointer-events: none;
-    }
-
-    .sidebar-overlay.open {
-        pointer-events: auto;
-    }
-
     .sidebar {
         transform: translateX(-100%);
         transition: transform 0.3s ease;
-        z-index: 100;
     }
 
     .sidebar.open {
@@ -829,12 +741,6 @@ textarea.form-control {
 
     .main-content {
         margin-left: 0;
-        padding-top: 80px;
-    }
-
-    .sidebar-header {
-        padding-right: 60px;
-        position: relative;
     }
 }
 
@@ -853,34 +759,5 @@ textarea.form-control {
         flex-direction: column;
         gap: 15px;
         align-items: flex-start;
-    }
-
-    .main-content {
-        padding: 80px 15px 20px;
-    }
-
-    .card-body {
-        padding: 15px;
-    }
-
-    .admin-table th,
-    .admin-table td {
-        padding: 10px;
-        font-size: 13px;
-    }
-
-    .admin-table .actions {
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .btn {
-        padding: 10px 16px;
-        font-size: 13px;
-    }
-
-    .btn-sm {
-        padding: 6px 12px;
-        font-size: 11px;
     }
 }

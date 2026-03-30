@@ -134,7 +134,22 @@ function getArticleById(int $id): ?array {
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute(['id' => $id]);
-        return $stmt->fetch() ?: null;
+        $article = $stmt->fetch();
+
+        if (!$article) {
+            return null;
+        }
+
+        // Load supplementary images linked through articles_images.
+        $imagesSql = "SELECT i.id, i.nom_fichier, i.chemin
+                      FROM images i
+                      JOIN articles_images ai ON ai.image_id = i.id
+                      WHERE ai.article_id = :article_id";
+        $imagesStmt = $pdo->prepare($imagesSql);
+        $imagesStmt->execute(['article_id' => $id]);
+        $article['images'] = $imagesStmt->fetchAll();
+
+        return $article;
     } catch (PDOException $e) {
         error_log("Erreur article: " . $e->getMessage());
         return null;

@@ -46,6 +46,19 @@ $article = getArticleById($id);
 
             <div class="article-body">
                 <?php echo $article['contenu']; ?>
+
+                <?php if (!empty($article['images'])): ?>
+                    <div class="article-gallery">
+                        <h3>Galerie d'images</h3>
+                        <div class="article-gallery-grid">
+                            <?php foreach ($article['images'] as $img): ?>
+                                <img src="/TP_information_geurre/<?php echo htmlspecialchars($img['chemin']); ?>"
+                                     alt="<?php echo htmlspecialchars($img['nom_fichier']); ?>"
+                                     class="article-gallery-image">
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
         <?php endif; ?>
     </div>

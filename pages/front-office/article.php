@@ -17,7 +17,7 @@ $article = getArticleById($id);
 <body>
     <nav class="navbar">
         <h1>Information Guerre</h1>
-        <a href="articles.php">Retour aux articles</a>
+        <a href="../">Retour aux articles</a>
     </nav>
 
     <div class="article-container">

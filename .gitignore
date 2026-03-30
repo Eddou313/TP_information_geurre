@@ -6,6 +6,8 @@ uploads/*.gif
 uploads/*.webp
 uploads/*.svg
 uploads/*.bmp
+docker/images/*.tar
+static/tinymce/*
 
 # Garder le dossier uploads
 !uploads/.gitkeep

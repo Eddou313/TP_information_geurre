@@ -34,7 +34,7 @@ function buildQueryString(array $params): string {
     <meta name="description" content="Consultez les derniers articles publies sur Information Guerre, avec filtrage par date et pagination.">
     <meta name="robots" content="index, follow">
     <title>Articles - Information Guerre</title>
-    <link rel="stylesheet" href="../../static/css/articles.css">
+    <link rel="stylesheet" href="/TP_information_geurre/static/css/articles.css">
 </head>
 <body>
     <nav class="navbar">
@@ -73,7 +73,7 @@ function buildQueryString(array $params): string {
                 <?php foreach ($articles as $article): ?>
                     <article class="article-card">
                         <?php if ($article['image_chemin']): ?>
-                            <img src="../../<?php echo htmlspecialchars($article['image_chemin']); ?>"
+                               <img src="/TP_information_geurre/<?php echo htmlspecialchars($article['image_chemin']); ?>"
                                  alt="<?php echo htmlspecialchars($article['titre']); ?>"
                                  class="article-image">
                         <?php else: ?>
@@ -97,7 +97,7 @@ function buildQueryString(array $params): string {
                                     <?php echo date('d/m/Y', strtotime($article['date_publication'])); ?>
                                 </span>
                             </div>
-                            <a href="article.php?id=<?php echo $article['id']; ?>" class="btn-lire">Lire la suite</a>
+                            <a href="articles/view-<?php echo $article['id']; ?>-<?php echo $article['titre']; ?>" class="btn-lire">Lire la suite</a>
                         </div>
                     </article>
                 <?php endforeach; ?>
@@ -170,6 +170,6 @@ function buildQueryString(array $params): string {
         <?php endif; ?>
     </div>
 
-    <script src="../../static/js/articles.js"></script>
+    <script src="/TP_information_geurre/static/js/articles.js"></script>
 </body>
 </html>

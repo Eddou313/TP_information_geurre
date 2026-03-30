@@ -6,7 +6,7 @@
     <meta name="description" content="Connexion securisee a l'espace Back Office pour administrer les articles du site Information Guerre.">
     <meta name="robots" content="noindex, nofollow">
     <title>Connexion - Back Office</title>
-    <link rel="stylesheet" href="../../static/css/login.css">
+    <link rel="stylesheet" href="/TP_information_geurre/static/css/login.css">
 </head>
 <body>
     <div class="login-container">
@@ -27,7 +27,7 @@
             </div>
         <?php endif; ?>
 
-        <form action="login_process.php" method="POST">
+        <form action="/TP_information_geurre/admins/traitement" method="POST">
             <div class="form-group">
                 <label for="username">Nom d'utilisateur</label>
                 <input type="text" id="username" name="username" value="admin" required>
@@ -40,6 +40,6 @@
         </form>
     </div>
 
-    <script src="../../static/js/login.js"></script>
+    <script src="/TP_information_geurre/static/js/login.js"></script>
 </body>
 </html>

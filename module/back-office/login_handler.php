@@ -49,10 +49,11 @@ function processLogin(): void {
         $_SESSION['username'] = $user['username'];
         $_SESSION['logged_in'] = true;
 
-        header('Location: home.php');
+        header('Location: home');
         exit;
     } else {
-        header('Location: login.php?error=invalid');
+        header('Location: login-error-invalid');
         exit;
     }
 }
+        

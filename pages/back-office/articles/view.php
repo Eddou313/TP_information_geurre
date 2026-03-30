@@ -28,7 +28,7 @@ if (!$article) {
     <meta name="description" content="Apercu detaille d'un article dans le Back Office avec contenu, statut, dates et galerie d'images.">
     <meta name="robots" content="noindex, nofollow">
     <title><?php echo htmlspecialchars($article['titre']); ?> - Back Office</title>
-    <link rel="stylesheet" href="../../../static/css/admin.css">
+    <link rel="stylesheet" href="/TP_information_geurre/static/css/admin.css">
 </head>
 <body>
     <div class="admin-layout">
@@ -38,11 +38,11 @@ if (!$article) {
             <div class="page-header">
                 <h2>Apercu de l'Article</h2>
                 <div style="display:flex;gap:10px;">
-                    <a href="edit.php?id=<?php echo $id; ?>" class="btn btn-warning">
+                    <a href="/TP_information_geurre/admins/articles/edit-<?php echo $id; ?>" class="btn btn-warning">
                         <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                         Modifier
                     </a>
-                    <a href="list.php" class="btn btn-secondary">
+                    <a href="/TP_information_geurre/admins/articles" class="btn btn-secondary">
                         <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
                         Retour
                     </a>
@@ -52,7 +52,7 @@ if (!$article) {
             <div class="article-view card">
                 <?php if ($article['image_principale']): ?>
                     <div class="article-header">
-                        <img src="../../../<?php echo htmlspecialchars($article['image_principale']); ?>" alt="<?php echo htmlspecialchars($article['titre']); ?>">
+                        <img src="/TP_information_geurre/<?php echo htmlspecialchars($article['image_principale']); ?>" alt="<?php echo htmlspecialchars($article['titre']); ?>">
                     </div>
                 <?php endif; ?>
 
@@ -86,7 +86,7 @@ if (!$article) {
                         <h3 style="margin-top:40px;margin-bottom:20px;">Galerie d'images</h3>
                         <div class="gallery">
                             <?php foreach ($article['images'] as $img): ?>
-                                <img src="../../../<?php echo htmlspecialchars($img['chemin']); ?>" alt="<?php echo htmlspecialchars($img['nom_fichier']); ?>">
+                                <img src="/TP_information_geurre/<?php echo htmlspecialchars($img['chemin']); ?>" alt="<?php echo htmlspecialchars($img['nom_fichier']); ?>">
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
@@ -102,6 +102,6 @@ if (!$article) {
         </main>
     </div>
 
-    <script src="../../../static/js/admin.js"></script>
+    <script src="/TP_information_geurre/static/js/admin.js"></script>
 </body>
 </html>

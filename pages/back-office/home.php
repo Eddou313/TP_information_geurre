@@ -15,7 +15,7 @@ $stats = getStats();
     <meta name="description" content="Tableau de bord d'administration pour gerer les articles, les images et les actions Back Office.">
     <meta name="robots" content="noindex, nofollow">
     <title>Tableau de bord - Back Office</title>
-    <link rel="stylesheet" href="../../static/css/admin.css">
+    <link rel="stylesheet" href="/TP_information_geurre/static/css/admin.css">
 </head>
 <body>
     <div class="admin-layout">
@@ -27,7 +27,7 @@ $stats = getStats();
             </div>
 
             <nav class="sidebar-nav">
-                <a href="home.php" class="nav-link active">
+                <a href="/TP_information_geurre/admins/home" class="nav-link active">
                     <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                     Tableau de bord
                 </a>
@@ -41,11 +41,11 @@ $stats = getStats();
                         </span>
                     </a>
                     <div class="nav-dropdown">
-                        <a href="articles/list.php" class="nav-link">
+                        <a href="/TP_information_geurre/admins/articles" class="nav-link">
                             <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
                             Liste
                         </a>
-                        <a href="articles/add.php" class="nav-link">
+                        <a href="/TP_information_geurre/admins/articles/add" class="nav-link">
                             <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                             Creer
                         </a>
@@ -63,7 +63,7 @@ $stats = getStats();
                         <span>Administrateur</span>
                     </div>
                 </div>
-                <a href="logout.php" class="btn-logout-sidebar">
+                <a href="/TP_information_geurre/admins/logout" class="btn-logout-sidebar">
                     <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
                     Deconnexion
                 </a>
@@ -113,7 +113,7 @@ $stats = getStats();
             <!-- Quick Actions -->
             <h3 class="section-title">Actions rapides</h3>
             <div class="actions-grid">
-                <a href="articles/add.php" class="action-card">
+                <a href="/TP_information_geurre/admins/articles/add" class="action-card">
                     <div class="action-icon">
                         <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     </div>
@@ -122,7 +122,7 @@ $stats = getStats();
                         <p>Creer un nouvel article avec images</p>
                     </div>
                 </a>
-                <a href="articles/list.php" class="action-card">
+                <a href="/TP_information_geurre/admins/articles" class="action-card">
                     <div class="action-icon">
                         <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
                     </div>

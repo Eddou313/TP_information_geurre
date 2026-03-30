@@ -53,7 +53,7 @@ function buildQueryString(array $params): string {
     <meta name="description" content="Gestion de la liste des articles Back Office avec filtres, statut de publication et actions d'administration.">
     <meta name="robots" content="noindex, nofollow">
     <title>Gestion des Articles - Back Office</title>
-    <link rel="stylesheet" href="../../../static/css/admin.css">
+    <link rel="stylesheet" href="/TP_information_geurre/static/css/admin.css">
     <style>
         .filter-bar {
             background: white;
@@ -202,7 +202,7 @@ function buildQueryString(array $params): string {
         <main class="main-content">
             <div class="page-header">
                 <h2>Gestion des Articles</h2>
-                <a href="add.php" class="btn btn-primary">
+                <a href="/TP_information_geurre/admins/articles/add" class="btn btn-primary">
                     <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     Nouvel Article
                 </a>
@@ -252,12 +252,12 @@ function buildQueryString(array $params): string {
                             Filtrer
                         </button>
                         <?php if ($showAll): ?>
-                            <a href="list.php" class="btn-filter" style="background:#27ae60;">
+                            <a href="/TP_information_geurre/admins/articles" class="btn-filter" style="background:#27ae60;">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                                 Cette semaine
                             </a>
                         <?php else: ?>
-                            <a href="list.php?all=1<?php echo $status !== null ? '&status=' . $status : ''; ?>" class="btn-reset">
+                            <a href="/TP_information_geurre/admins/articles?all=1<?php echo $status !== null ? '&status=' . $status : ''; ?>" class="btn-reset">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
                                 Tous les articles
                             </a>
@@ -299,7 +299,7 @@ function buildQueryString(array $params): string {
                                         <tr>
                                             <td>
                                                 <?php if ($article['image_principale']): ?>
-                                                    <img src="../../../<?php echo htmlspecialchars($article['image_principale']); ?>" alt="Miniature de l'article <?php echo htmlspecialchars($article['titre']); ?>" class="thumbnail">
+                                                    <img src="/TP_information_geurre/<?php echo htmlspecialchars($article['image_principale']); ?>" alt="Miniature de l'article <?php echo htmlspecialchars($article['titre']); ?>" class="thumbnail">
                                                 <?php else: ?>
                                                     <div class="thumbnail" style="background:#eee;display:flex;align-items:center;justify-content:center;color:#999;">
                                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
@@ -322,13 +322,13 @@ function buildQueryString(array $params): string {
                                             </td>
                                             <td>
                                                 <div class="actions">
-                                                    <a href="view.php?id=<?php echo $article['id']; ?>" class="btn btn-sm btn-secondary" title="Voir">
+                                                    <a href="/TP_information_geurre/admins/articles/view-<?php echo $article['id']; ?>" class="btn btn-sm btn-secondary" title="Voir">
                                                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                                                     </a>
-                                                    <a href="edit.php?id=<?php echo $article['id']; ?>" class="btn btn-sm btn-warning" title="Modifier">
+                                                    <a href="/TP_information_geurre/admins/articles/edit-<?php echo $article['id']; ?>" class="btn btn-sm btn-warning" title="Modifier">
                                                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                                                     </a>
-                                                    <a href="list.php?delete=<?php echo $article['id']; ?>" class="btn btn-sm btn-danger" data-confirm="Etes-vous sur de vouloir supprimer cet article ?" title="Supprimer">
+                                                    <a href="/TP_information_geurre/admins/articles/delete-<?php echo $article['id']; ?>" class="btn btn-sm btn-danger" data-confirm="Etes-vous sur de vouloir supprimer cet article ?" title="Supprimer">
                                                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
                                                     </a>
                                                 </div>
@@ -387,6 +387,6 @@ function buildQueryString(array $params): string {
         </main>
     </div>
 
-    <script src="../../../static/js/admin.js"></script>
+    <script src="/TP_information_geurre/static/js/admin.js"></script>
 </body>
 </html>

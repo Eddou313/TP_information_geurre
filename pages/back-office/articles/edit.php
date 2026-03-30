@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="description" content="Modification d'un article Back Office avec mise a jour du contenu, du statut et des images associees.">
     <meta name="robots" content="noindex, nofollow">
     <title>Modifier Article - Back Office</title>
-    <link rel="stylesheet" href="../../../static/css/admin.css">
+    <link rel="stylesheet" href="/TP_information_geurre/static/css/admin.css">
 </head>
 <body>
     <div class="admin-layout">
@@ -65,11 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="page-header">
                 <h2>Modifier l'Article</h2>
                 <div style="display:flex;gap:10px;">
-                    <a href="view.php?id=<?php echo $id; ?>" class="btn btn-secondary">
+                    <a href="/TP_information_geurre/admins/articles/view-<?php echo $id; ?>" class="btn btn-secondary">
                         <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                         Voir
                     </a>
-                    <a href="list.php" class="btn btn-secondary">
+                    <a href="/TP_information_geurre/admins/articles" class="btn btn-secondary">
                         <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
                         Retour
                     </a>
@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <?php if ($article['image_principale']): ?>
                                 <div class="image-preview">
                                     <div class="preview-item">
-                                        <img src="../../../<?php echo htmlspecialchars($article['image_principale']); ?>" alt="Image principale actuelle de l'article <?php echo htmlspecialchars($article['titre']); ?>">
+                                        <img src="/TP_information_geurre/<?php echo htmlspecialchars($article['image_principale']); ?>" alt="Image principale actuelle de l'article <?php echo htmlspecialchars($article['titre']); ?>">
                                     </div>
                                 </div>
                             <?php else: ?>
@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="image-preview">
                                     <?php foreach ($article['images'] as $img): ?>
                                         <div class="preview-item existing-image">
-                                            <img src="../../../<?php echo htmlspecialchars($img['chemin']); ?>" alt="Image supplementaire <?php echo htmlspecialchars($img['nom_fichier']); ?> de l'article <?php echo htmlspecialchars($article['titre']); ?>">
+                                            <img src="/TP_information_geurre/<?php echo htmlspecialchars($img['chemin']); ?>" alt="Image supplementaire <?php echo htmlspecialchars($img['nom_fichier']); ?> de l'article <?php echo htmlspecialchars($article['titre']); ?>">
                                             <button type="button" class="remove-btn" data-article-id="<?php echo $id; ?>" data-image-id="<?php echo $img['id']; ?>">x</button>
                                         </div>
                                     <?php endforeach; ?>
@@ -167,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
                                 Enregistrer
                             </button>
-                            <a href="list.php" class="btn btn-secondary">Annuler</a>
+                            <a href="/TP_information_geurre/admins/articles" class="btn btn-secondary">Annuler</a>
                         </div>
                     </form>
                 </div>
@@ -175,6 +175,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </main>
     </div>
 
-    <script src="../../../static/js/admin.js"></script>
+    <script src="/TP_information_geurre/static/js/admin.js"></script>
 </body>
 </html>

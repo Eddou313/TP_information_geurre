@@ -12,7 +12,7 @@ $article = getArticleById($id);
     <meta name="description" content="Lecture detaillee d'un article Information Guerre avec son chapeau, son contenu et ses informations de publication.">
     <meta name="robots" content="index, follow">
     <title><?php echo $article ? htmlspecialchars($article['titre']) : 'Article non trouve'; ?> - Information Guerre</title>
-    <link rel="stylesheet" href="../../static/css/article-detail.css">
+    <link rel="stylesheet" href="/TP_information_geurre/static/css/article-detail.css">
 </head>
 <body>
     <nav class="navbar">
@@ -30,7 +30,7 @@ $article = getArticleById($id);
         <?php else: ?>
             <div class="article-header">
                 <?php if ($article['image_chemin']): ?>
-                    <img src="../../<?php echo htmlspecialchars($article['image_chemin']); ?>"
+                    <img src="/TP_information_geurre/<?php echo htmlspecialchars($article['image_chemin']); ?>"
                          alt="<?php echo htmlspecialchars($article['titre']); ?>">
                 <?php endif; ?>
 

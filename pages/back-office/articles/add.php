@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="description" content="Creation d'un nouvel article dans le Back Office avec gestion des images principales et supplementaires.">
     <meta name="robots" content="noindex, nofollow">
     <title>Nouvel Article - Back Office</title>
-    <link rel="stylesheet" href="../../../static/css/admin.css">
+    <link rel="stylesheet" href="/TP_information_geurre/static/css/admin.css">
 </head>
 <body>
     <div class="admin-layout">
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <main class="main-content">
             <div class="page-header">
                 <h2>Nouvel Article</h2>
-                <a href="list.php" class="btn btn-secondary">
+                <a href="/TP_information_geurre/admins/articles" class="btn btn-secondary">
                     <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
                     Retour
                 </a>
@@ -123,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
                                 Creer l'article
                             </button>
-                            <a href="list.php" class="btn btn-secondary">Annuler</a>
+                            <a href="/TP_information_geurre/admins/articles" class="btn btn-secondary">Annuler</a>
                         </div>
                     </form>
                 </div>
@@ -131,6 +131,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </main>
     </div>
 
-    <script src="../../../static/js/admin.js"></script>
+    <script src="/TP_information_geurre/static/js/admin.js"></script>
 </body>
 </html>

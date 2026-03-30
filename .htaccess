@@ -16,7 +16,9 @@ RewriteRule ^admins/login-error-([_a-z0-9-]*)/?$ pages/back-office/login.php?err
 
 RewriteRule ^admins/articles/?$ pages/back-office/articles/list.php [L]
 RewriteRule ^admins/articles/add/?$ pages/back-office/articles/add.php [L]
-RewriteRule ^admins/articles/view-([_a-z0-9]*)/?$ pages/back-office/articles/view.php?id=$1 [L]
-RewriteRule ^admins/articles/edit-([_a-z0-9]*)/?$ pages/back-office/articles/edit.php?id=$1 [L]
-RewriteRule ^admins/articles/delete-([_a-z0-9]*)/?$ pages/back-office/articles/list.php?delete=$1 [L]
+RewriteRule ^admins/articles/view-([0-9]+)/?$ pages/back-office/articles/view.php?id=$1 [L]
+RewriteRule ^admins/articles/edit-([0-9]+)/?$ pages/back-office/articles/edit.php?id=$1 [L]
+RewriteRule ^admins/articles/delete-([0-9]+)/?$ pages/back-office/articles/list.php?delete=$1 [L]
+RewriteRule ^admins/articles/toggle-status/?$ pages/back-office/articles/toggle_status.php [L]
+RewriteRule ^admins/articles/delete-image/?$ pages/back-office/articles/delete_image.php [L]
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header('Location: ../login.php');
+    header('Location: /TP_information_geurre/admins');
     exit;
 }
 
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $result = createArticle($data, $_FILES);
         if ($result['success']) {
-            header('Location: list.php?msg=created');
+            header('Location: /TP_information_geurre/admins/articles?msg=created');
             exit;
         } else {
             $error = $result['message'];

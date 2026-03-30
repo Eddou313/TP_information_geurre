@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header('Location: ../login.php');
+    header('Location: /TP_information_geurre/admins');
     exit;
 }
 
@@ -15,7 +15,7 @@ $basePath = '../';
 // Handle delete
 if (isset($_GET['delete'])) {
     $result = deleteArticle((int)$_GET['delete']);
-    header('Location: list.php?msg=' . ($result['success'] ? 'deleted' : 'error'));
+    header('Location: /TP_information_geurre/admins/articles?msg=' . ($result['success'] ? 'deleted' : 'error'));
     exit;
 }
 

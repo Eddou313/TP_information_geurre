@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header('Location: ../login.php');
+    header('Location: /TP_information_geurre/admins');
     exit;
 }
 
@@ -16,7 +16,7 @@ $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 $article = getArticleForEdit($id);
 
 if (!$article) {
-    header('Location: list.php');
+    header('Location: /TP_information_geurre/admins/articles');
     exit;
 }
 
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $result = updateArticle($id, $data, $_FILES);
         if ($result['success']) {
-            header('Location: list.php?msg=updated');
+            header('Location: /TP_information_geurre/admins/articles?msg=updated');
             exit;
         } else {
             $error = $result['message'];

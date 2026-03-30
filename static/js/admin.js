@@ -111,7 +111,7 @@ function initImagePreview() {
             const imageId = btn.dataset.imageId;
 
             try {
-                const response = await fetch(`delete_image.php?article_id=${articleId}&image_id=${imageId}`);
+                const response = await fetch(`/TP_information_geurre/admins/articles/delete-image?article_id=${articleId}&image_id=${imageId}`);
                 const data = await response.json();
 
                 if (data.success) {
@@ -128,7 +128,7 @@ function initImagePreview() {
 }
 
 function toggleStatus(articleId) {
-    fetch(`toggle_status.php?id=${articleId}`)
+    fetch(`/TP_information_geurre/admins/articles/toggle-status?id=${articleId}`)
         .then(response => response.json())
         .then(data => {
             if (data.success) {

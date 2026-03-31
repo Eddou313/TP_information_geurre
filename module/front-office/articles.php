@@ -45,7 +45,7 @@ function getPublishedArticles(int $page = 1, ?string $dateFrom = null, ?string $
     $pdo = connectDB();
 
     if (!$pdo) {
-        return ['articles' => [], 'total' => 0, 'totalPages' => 0];
+        return ['articles' => [], 'total' => 0, 'totalPages' => 0, 'currentPage' => 1];
     }
 
     try {

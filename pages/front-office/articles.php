@@ -20,7 +20,7 @@ $result = getPublishedArticles($page, $dateFrom, $dateTo);
 $articles = $result['articles'];
 $total = $result['total'];
 $totalPages = $result['totalPages'];
-$currentPage = $result['currentPage'];
+$currentPage = isset($result['currentPage']) ? (int)$result['currentPage'] : 1;
 
 function buildQueryString(array $params): string {
     return http_build_query(array_filter($params, fn($v) => $v !== null && $v !== ''));

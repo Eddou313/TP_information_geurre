@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Connexion securisee a l'espace Back Office pour administrer les articles du site Information Guerre.">
-    <meta name="robots" content="noindex, nofollow">
+    
     <title>Connexion - Back Office</title>
     <link rel="stylesheet" href="/TP_information_geurre/static/css/login.css">
 </head>

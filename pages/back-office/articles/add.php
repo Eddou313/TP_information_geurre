@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Creation d'un nouvel article dans le Back Office avec gestion des images principales et supplementaires.">
-    <meta name="robots" content="noindex, nofollow">
+    <!-- <meta name="robots" content="noindex, nofollow"> -->
     <title>Nouvel Article - Back Office</title>
     <link rel="stylesheet" href="/TP_information_geurre/static/css/admin.css">
 </head>
@@ -133,36 +133,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </main>
     </div>
 
-    <script src="/TP_information_geurre/static/tinymce/js/tinymce/tinymce.min.js"></script>
     <script>
-        tinymce.init({
-            selector: '#contenu',
-            license_key: 'gpl',
-            height: 400,
-            menubar: true,
-            plugins: [
-                'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
-                'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-                'insertdatetime', 'media', 'table', 'help', 'wordcount'
-            ],
-            toolbar: 'undo redo | blocks | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | link image | code | fullscreen',
-            content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; }',
-            branding: false,
-            promotion: false,
-            images_upload_url: '/TP_information_geurre/module/back-office/tinymce_upload.php',
-            automatic_uploads: true,
-            file_picker_types: 'image',
-            images_reuse_filename: true,
-            relative_urls: false,
-            remove_script_host: true,
-            convert_urls: true,
-            setup: function(editor) {
-                editor.on('change', function() {
-                    tinymce.triggerSave();
+        (function() {
+            const textarea = document.getElementById('contenu');
+            let isLoading = false;
+            let isLoaded = false;
+
+            function initTinyMCE() {
+                if (!window.tinymce || isLoaded) return;
+                isLoaded = true;
+                tinymce.init({
+                    selector: '#contenu',
+                    license_key: 'gpl',
+                    height: 400,
+                    menubar: true,
+                    plugins: [
+                        'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                        'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                        'insertdatetime', 'media', 'table', 'help', 'wordcount'
+                    ],
+                    toolbar: 'undo redo | blocks | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | link image | code | fullscreen',
+                    content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; }',
+                    branding: false,
+                    promotion: false,
+                    images_upload_url: '/TP_information_geurre/module/back-office/tinymce_upload.php',
+                    automatic_uploads: true,
+                    file_picker_types: 'image',
+                    images_reuse_filename: true,
+                    relative_urls: false,
+                    remove_script_host: true,
+                    convert_urls: true,
+                    setup: function(editor) {
+                        editor.on('change', function() {
+                            tinymce.triggerSave();
+                        });
+                    }
                 });
             }
-        });
+
+            function loadTinyMCE() {
+                if (isLoading || isLoaded) return;
+                isLoading = true;
+                const script = document.createElement('script');
+                script.src = '/TP_information_geurre/static/tinymce/js/tinymce/tinymce.min.js';
+                script.onload = initTinyMCE;
+                document.head.appendChild(script);
+            }
+
+            if (textarea) {
+                textarea.addEventListener('focus', loadTinyMCE, { once: true });
+            }
+
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(loadTinyMCE, { timeout: 2000 });
+            } else {
+                setTimeout(loadTinyMCE, 2000);
+            }
+        })();
     </script>
-    <script src="/TP_information_geurre/static/js/admin.js"></script>
+    <script src="/TP_information_geurre/static/js/admin.js" defer></script>
 </body>
 </html>

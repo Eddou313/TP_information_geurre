@@ -16,10 +16,14 @@ WORKDIR /var/www/html
 # Copy project files
 COPY . /var/www/html/
 
-# Set permissions for uploads directory
+# Set permissions for uploads directory (image layer)
 RUN mkdir -p /var/www/html/uploads \
     && chown -R www-data:www-data /var/www/html/uploads \
     && chmod -R 755 /var/www/html/uploads
+
+# Entrypoint to fix permissions on bind-mounts
+COPY docker/entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Apache configuration
 RUN { \
@@ -35,4 +39,5 @@ RUN { \
 
 EXPOSE 80
 
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 CMD ["apache2-foreground"]

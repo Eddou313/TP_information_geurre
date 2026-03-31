@@ -51,7 +51,7 @@ function buildQueryString(array $params): string {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Gestion de la liste des articles Back Office avec filtres, statut de publication et actions d'administration.">
-    <meta name="robots" content="noindex, nofollow">
+    <!-- <meta name="robots" content="noindex, nofollow"> -->
     <title>Gestion des Articles - Back Office</title>
     <link rel="stylesheet" href="/TP_information_geurre/static/css/admin.css">
     <style>

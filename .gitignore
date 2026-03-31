@@ -1,12 +1,14 @@
 # Images dans uploads
 
 uploads/*.jpeg
+uploads/*.jpg
 uploads/*.png
 uploads/*.gif
 uploads/*.webp
 uploads/*.svg
 uploads/*.bmp
 uploads/content/*.jpeg
+uploads/content/*.jpg
 uploads/content/*.png
 uploads/content/*.gif
 uploads/content/*.webp
@@ -15,5 +17,11 @@ uploads/content/*.bmp
 docker/images/*.tar
 static/tinymce/*
 
+# Images dans uploads
+uploads/**
+docker/images/*.tar
+static/tinymce/*
+
 # Garder le dossier uploads
 !uploads/.gitkeep
+!uploads/content/.gitkeep

@@ -37,9 +37,19 @@ if ($file['size'] > $maxSize) {
     exit;
 }
 
-$uploadDir = __DIR__ . '/../../uploads/content/';
+$uploadDir = dirname(__DIR__, 3) . '/uploads/content/';
 if (!is_dir($uploadDir)) {
-    mkdir($uploadDir, 0755, true);
+    if (!mkdir($uploadDir, 0755, true)) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Impossible de creer le dossier d\'upload']);
+        exit;
+    }
+}
+
+if (!is_writable($uploadDir)) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Dossier d\'upload non inscriptible']);
+    exit;
 }
 
 $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
@@ -47,10 +57,10 @@ $filename = uniqid('content_') . '_' . time() . '.' . $extension;
 $filepath = $uploadDir . $filename;
 
 if (move_uploaded_file($file['tmp_name'], $filepath)) {
-    // Chemin absolu simple sans protocole ni host
     $location = '/TP_information_geurre/uploads/content/' . $filename;
     echo json_encode(['location' => $location]);
-} else {
-    http_response_code(500);
-    echo json_encode(['error' => 'Erreur lors de l\'upload']);
+    exit;
 }
+
+http_response_code(500);
+echo json_encode(['error' => 'Erreur lors de l\'upload']);

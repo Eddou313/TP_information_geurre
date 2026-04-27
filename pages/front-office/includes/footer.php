@@ -7,9 +7,9 @@
                     <path d="M2 17l10 5 10-5"/>
                     <path d="M2 12l10 5 10-5"/>
                 </svg>
-                <span>Information Guerre</span>
+                <span>Information Mada</span>
             </a>
-            <p class="footer-description">Votre source d'information sur les conflits et enjeux geopolitiques mondiaux.</p>
+            <p class="footer-description">Votre plateforme d'information generale pour suivre l'actualite a Madagascar.</p>
         </div>
 
         <div class="footer-links">
@@ -29,7 +29,7 @@
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                         <polyline points="22,6 12,13 2,6"/>
                     </svg>
-                    contact@information-guerre.com
+                    contact@information-mada.com
                 </li>
                 <li>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -43,6 +43,6 @@
     </div>
 
     <div class="footer-bottom">
-        <p>&copy; <?php echo date('Y'); ?> Information Guerre. Tous droits reserves.</p>
+        <p>&copy; <?php echo date('Y'); ?> Information Mada. Tous droits reserves.</p>
     </div>
 </footer>

@@ -31,9 +31,9 @@ function buildQueryString(array $params): string {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Consultez les derniers articles publies sur Information Guerre, avec filtrage par date et pagination.">
+    <meta name="description" content="Consultez les derniers articles publies sur Information Mada, votre site d'information generale a Madagascar.">
     <meta name="robots" content="index, follow">
-    <title>Articles - Information Guerre</title>
+    <title>Articles - Information Mada</title>
     <link rel="stylesheet" href="/TP_information_geurre/static/css/articles.css">
 </head>
 <body>

@@ -6,7 +6,7 @@
                 <path d="M2 17l10 5 10-5"/>
                 <path d="M2 12l10 5 10-5"/>
             </svg>
-            <span class="logo-text">Information Guerre</span>
+            <span class="logo-text">Information Mada</span>
         </a>
 
         <form class="search-form" action="/TP_information_geurre/articles" method="GET">

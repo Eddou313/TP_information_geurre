@@ -9,7 +9,7 @@
             <span class="logo-text">Information Mada</span>
         </a>
 
-        <form class="search-form" action="/TP_information_geurre/articles" method="GET">
+        <!-- <form class="search-form" action="/TP_information_geurre/articles" method="GET">
             <input type="text" name="q" class="search-input" placeholder="Rechercher un article..." value="<?php echo htmlspecialchars($_GET['q'] ?? ''); ?>">
             <button type="submit" class="search-btn" aria-label="Rechercher">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -17,7 +17,7 @@
                     <line x1="21" y1="21" x2="16.65" y2="16.65"/>
                 </svg>
             </button>
-        </form>
+        </form> -->
 
         <nav class="header-nav">
             <a href="/TP_information_geurre/" class="nav-link">Accueil</a>

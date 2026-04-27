@@ -11,7 +11,7 @@ $article = getArticleById($id);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lecture detaillee d'un article Information Mada avec son chapeau, son contenu et ses informations de publication.">
+    <meta name="description" content="<?php echo $article ? htmlspecialchars($article['chapeau']) : 'non trouve'; ?> ">
     <meta name="robots" content="index, follow">
     <title><?php echo $article ? htmlspecialchars($article['titre']) : 'Article non trouve'; ?> - Information Mada</title>
     <link rel="stylesheet" href="/TP_information_geurre/static/css/articles.css">

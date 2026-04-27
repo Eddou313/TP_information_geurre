@@ -175,7 +175,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (isLoading || isLoaded) return;
                 isLoading = true;
                 const script = document.createElement('script');
-                script.src = '/TP_information_geurre/static/tinymce/js/tinymce/tinymce.min.js';
+                // script.src = '/TP_information_geurre/static/tinymce/js/tinymce/tinymce.min.js';
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.0.0/tinymce.min.js';
                 script.onload = initTinyMCE;
                 document.head.appendChild(script);
             }

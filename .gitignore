@@ -15,7 +15,7 @@ uploads/content/*.webp
 uploads/content/*.svg
 uploads/content/*.bmp
 docker/images/*.tar
-
+static/tinymce/*
 
 # Images dans uploads
 uploads/**

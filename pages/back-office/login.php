@@ -38,8 +38,11 @@
             </div>
             <button type="submit" class="btn">Se connecter</button>
         </form>
-    </div>
+<br><br>
+        <a href="/TP_information_geurre/"><< Voir les articles</a>
 
+    </div>
+    
     <script src="/TP_information_geurre/static/js/login.js"></script>
 </body>
 </html>

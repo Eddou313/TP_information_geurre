@@ -30,11 +30,11 @@
         <form action="/TP_information_geurre/admins/traitement" method="POST">
             <div class="form-group">
                 <label for="username">Nom d'utilisateur</label>
-                <input type="text" id="username" name="username" placeholder="nom utilisateur"  required>
+                <input type="text" id="username" name="username" value="admin" placeholder="nom utilisateur"  required>
             </div>
             <div class="form-group">
                 <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" placeholder="mot de passe"  required>
+                <input type="password" id="password" name="password" value="adminpassword" placeholder="mot de passe"  required>
             </div>
             <button type="submit" class="btn">Se connecter</button>
         </form>
@@ -44,5 +44,11 @@
     </div>
     
     <script src="/TP_information_geurre/static/js/login.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("username").value = "admin";
+            document.getElementById("password").value = "adminpassword";
+        });
+</script>
 </body>
 </html>
